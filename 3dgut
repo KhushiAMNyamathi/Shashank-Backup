@@ -1,0 +1,38 @@
+To activate the evnironment in:
+/datadrive/Shashank/3DGUT/3dgrut: "source .venv/bin/activate"
+To deactivate: "deactivate
+
+python train.py \
+  --config-name apps/colmap_3dgut_mcmc.yaml \
+  path=data/playroom_test \
+  out_dir=/data/results \
+  experiment_name=3dgut_mcmc1 \
+  +export_usdz.enabled=true \
+  +export_usdz.apply_normalizing_transform=true \
+  with_gui=True
+
+
+
+
+python train.py   --config-name apps/colmap_3dgut_mcmc.yaml   path=data/playroom_test   out_dir=/home/adminusr/Shashank/3DGUT/3dgrut/data/results   experiment_name=3dgut_mcmc   +export_usdz.enabled=true   +export_usdz.apply_normalizing_transform=true
+
+To render the .pt file:
+python render.py \
+  --checkpoint /home/adminusr/Shashank/3DGUT/3dgrut/runs/playroom_test-0809_193606/ckpt_last.pt \
+  --path data/playroom_test \
+  --out-dir /home/adminusr/Shashank/3DGUT/3dgrut/renders/playroom_test
+  
+  
+
+cd config
+in base_gs.yaml
+export_ply=true
+export_usd=true
+
+python train.py   --config-name apps/colmap_3dgut_mcmc.yaml   path=data/playroom_test   with_gui=False   test_last=False   +export_ingp.enabled=False   resume=/home/adminusr/Shashank/3DGUT/3dgrut/runs/playroom_test-0809_193606/ckpt_last.pt
+
+
+
+
+Only one command to run:
+python train.py   --config-name apps/colmap_3dgut_mcmc.yaml   path=data/playroom_test   out_dir=/home/adminusr/Shashank/3DGUT/3dgrut/data/results   experiment_name=3dgut_mcmc
