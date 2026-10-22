@@ -1,0 +1,25 @@
+Location of COLMAP:
+colmap is /bin/colmap
+colmap is /usr/bin/colmap
+colmap is /usr/bin/X11/colmap
+
+Location of COLMAP platform plugins files:
+/usr/lib/x86_64-linux-gnu/qt5/plugins/platforms
+
+
+
+COLMAP Command Line:
+
+colmap feature_extractor --database_path ./database.db --image_path ./images/ --ImageReader.single_camera 1 --ImageReader.camera_model PINHOLE --SiftExtraction.max_image_size 2000 --SiftExtraction.estimate_affine_shape 1 --SiftExtraction.domain_size_pooling 1
+
+
+colmap exhaustive_matcher --database_path ./database.db --SiftMatching.use_gpu 1
+
+
+colmap mapper --database_path ./database.db --image_path ./images/ --output_path ./sparse
+
+
+colmap gui --import_path ./sparse/0 --database_path ./database.db --image_path ./images/
+
+
+

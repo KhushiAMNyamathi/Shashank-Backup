@@ -1,0 +1,60 @@
+New format Converted:
+
+mkdir -p converted_format (one place to save all the format)
+
+pip3 install usd-core (already installed)
+sudo apt install -y assimp-utils (already installed)
+sudo apt install -y cloudcompare (already installed)
+sudo npm install -g 3d-tiles-tools (already installed)
+sudo npm install -g @playcanvas/splat-transform (already installed)
+
+git clone https://github.com/nianticlabs/spz.git] (already installed)
+cd spz
+mkdir build
+cd build
+cmake ..
+make -j$(nproc)
+
+
+To convert .ply to .spz:
+./spz/build/ply_to_spz \
+    export_last.ply \
+    converted_format/export_last.spz
+    
+splat-transform     export_last.ply     converted_format/export_last.spz
+
+
+To convert .ply to .splat
+splat-transform     export_last.ply     converted_format/export_last.splat
+
+
+To convert .ply to .sog
+splat-transform     export_last.ply     converted_format/export_last.sog
+
+
+To convert .ply to .compressed.ply
+splat-transform     export_last.ply     converted_format/export_last.compressed.ply
+
+
+To convert .ply to .glb
+splat-transform     export_last.ply     converted_format/export_last.glb
+
+
+To convert .ply to .html
+splat-transform     export_last.ply     converted_format/export_last.html
+
+
+not recommanded .ply to .las
+python3 ply_to_las.py
+
+
+
+python gauss_to_pc.py     --input_path "/home/adminusr/Shashank/results/3dgut_mcmc/DEMO-1509_083650/export_last.ply"     --transform_path "/home/adminusr/Shashank/DEMO/sparse/0"    --renderer_type python
+
+
+python gauss_to_pc.py \
+    --input_path "point_cloud_last.ply" \
+    --renderer_type python \
+    --no_render_colours \
+    --output_path "point_cloud_output.ply"
+
